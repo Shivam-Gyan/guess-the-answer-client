@@ -2,9 +2,14 @@ import React, { useState } from "react";
 
 import { InputBox } from "../components";
 
+import loginImage from '../images/login-right.png'
+
 const LoginPage = () => {
 
-    const [remeberme, setRemeberme] = useState(false)
+    const [remeberme, setRemeberme] = useState(false);
+
+
+    
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="bg-white relative rounded-3xl shadow-xl flex items-center justify-between px-2 max-w-4xl z-10 ">
@@ -76,7 +81,7 @@ const LoginPage = () => {
 
 
                 <div className="w-1/2 bg-amber-400 mr-6 hidden lg:flex rounded-3xl overflow-hidden items-center justify-center">
-                    <img className=" w-full h-full bg-contain " src="https://www.nicepng.com/png/full/106-1067393_game-character-png.png" alt="" />
+                    <img className=" w-full h-full bg-contain " src={loginImage} alt="" />
                 </div>
 
             </div>
