@@ -15,15 +15,15 @@ const InputBox = ({ name, type, id, placeholder, value, icon,disabled=false }) =
                     }
                     id={id}
                     defaultValue={value}
-                    className="w-full py-2 px-4 outline-none  bg-white focus:bg-white  placeholder:text-slate-400 placeholder:font-light"
+                    className="w-full py-2 px-1 focus:outline-none text-sm bg-white focus:bg-white  placeholder:text-slate-400 placeholder:font-light"
                     disabled={disabled}
                 />
-                <i className={`fi ${icon} absolute top-3 left-auto right-0 text-slate-500`}></i>
+                <i className={`fi ${icon} absolute top-2 left-auto right-0 text-slate-500`}></i>
 
                 {
                     type == "password" &&
 
-                    <i className={`fi fi-rr-eye${!passwordVisible?" text-slate-500":"-crossed text-amber-500"} absolute top-3 left-auto right-0  cursor-pointer text-xl`}
+                    <i className={`fi fi-rr-eye${!passwordVisible?" text-slate-500":"-crossed text-amber-500"} absolute top-2 left-auto right-0  cursor-pointer text-xl`}
                         onClick={() => setPasswordVissible(prev => !prev)}
                     ></i>
                 }

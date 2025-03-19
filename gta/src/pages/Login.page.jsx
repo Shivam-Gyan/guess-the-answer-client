@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { InputBox } from "../components";
 import loginImage from '../images/login-right.png'
-import { Link } from 'react-router-dom'
-import {AnimationWrapper} from '../common'
-import {toast} from 'react-hot-toast'
+import { Link, useNavigate } from 'react-router-dom'
+import { AnimationWrapper } from '../common'
+import { toast } from 'react-hot-toast'
+import userServices from "../configs/database/user.services";
 
 const LoginPage = () => {
 
     const [remeberme, setRemeberme] = useState(false);
+    const navigate=useNavigate();
+
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -15,7 +18,40 @@ const LoginPage = () => {
         const email = formdata.get('email');
         const password = formdata.get('password');
 
-        console.log({ email, password })
+        if (!email || !password) {
+            toast.error('Please fill all the fields');
+            return;
+        }
+
+
+
+        try {
+            const response = await toast.promise(userServices.loginUser({ email, password }), {
+                loading: 'Signing in...',
+                success: 'Signed in successfully',
+                error: 'Error signing in',
+            });
+
+            if (!response.data.success) {
+                throw new Error(response.data.message);
+            }
+
+            // Assuming the response contains user data
+            console.log('User data from backend:', response.data);
+            localStorage.setItem('user', JSON.stringify(response.data.token));
+
+            // Redirect to dashboard
+            navigate('/')
+
+        } catch (error) {
+            if (error.response?.data?.message) {
+              toast.error(error.response?.data?.message);
+            }
+            else {
+                toast.error(error.message || 'An unexpected error occurred.');
+                console.error('Error during signup:', error);
+            }
+        }
     }
 
     return (
@@ -42,13 +78,13 @@ const LoginPage = () => {
                         {/* social handle login buttons */}
                         <div className="social-buttons flex gap-4">
                             <button
-                                className="cursor-pointer hover:border-amber-500  flex items-center justify-center w-fit py-1 px-3 border-[1px] border-slate-200 rounded-full  text-white"
+                                className="cursor-pointer hover:border-amber-500  flex items-center justify-center w-fit py-1 px-2 border-[1px] border-slate-200 rounded-full  text-white"
                             >
                                 <img className="w-8 h-8 bg-center" src="https://www.pngmart.com/files/22/Google-PNG-File.png" alt="" />
                                 <span className="text-slate-400 text-xs font-light">Sign in with Google</span>
                             </button>
                             <button
-                                className="cursor-pointer hover:border-amber-500 flex items-center justify-center w-fit py-1 px-3 border-[1px] border-slate-200 rounded-full  text-white"
+                                className="cursor-pointer hover:border-amber-500 flex items-center justify-center w-fit py-1 px-2 border-[1px] border-slate-200 rounded-full  text-white"
                             >
                                 <img className="w-8 h-8 bg-center" src="https://static.vecteezy.com/system/resources/previews/018/930/698/original/facebook-logo-facebook-icon-transparent-free-png.png" alt="" />
                                 <span className="text-slate-400 text-xs font-light">Sign in with Facebook</span>
@@ -59,13 +95,13 @@ const LoginPage = () => {
                         <div className="classical-login my-10">
 
                             <form onSubmit={(e) => handleFormSubmit(e)} >
-                                <div className="input-box hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-2 flex items-center px-4 border-slate-200 rounded-2xl mb-4">
-                                    <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-3">email</span>
+                                <div className="input-box hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
+                                    <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-4">Email</span>
                                     <InputBox name='email' type='text' id='email' placeholder='email' icon="fi-rr-envelope" />
 
                                 </div>
-                                <div className="input-box w-full hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-2 flex items-center px-4 border-slate-200 rounded-2xl mb-4">
-                                    <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-3">password</span>
+                                <div className="input-box hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
+                                    <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-4">Password</span>
                                     <InputBox name='password' type='password' id='password' placeholder='password' />
                                 </div>
 
