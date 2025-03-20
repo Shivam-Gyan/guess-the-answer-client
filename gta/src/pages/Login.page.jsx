@@ -118,7 +118,7 @@ const LoginPage = () => {
 
                         {/* already have an account  */}
                         <div className=" w-full text-center font-light text-slate-500 text-sm mt-5">
-                            Don't have an account? <Link to={'/register'} className="text-amber-500 cursor-pointer">Sign up</Link>
+                            Don't have an account? <Link to={'/register'} className="text-amber-500 font-medium cursor-pointer">Sign up</Link>
                         </div>
 
                     </div>

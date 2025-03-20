@@ -1,2 +1,41 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&family=Inter:wght@400;500&display=swap');
 @import "@flaticon/flaticon-uicons/css/all/all";
+
+
+@import "tailwindcss";
+
+
+@layer components {
+    * {
+        @apply m-0 p-0 box-border text-base duration-100;
+    }
+
+    html{
+        @apply overflow-x-hidden;
+    }
+
+    body {
+        @apply font-normal text-black;
+    }
+    .link{
+        @apply text-[#6B6B6B] hover:text-black hover:bg-[#F3F3F3] p-3 px-4 block opacity-75;
+    }
+    .navbar{
+        @apply z-10 sticky top-0 flex items-center gap-12 w-full px-[5vw] py-3 h-[80px] border-b border-gray-200 bg-white;
+    }
+
+    .h-cover{
+        @apply min-h-[calc(100vh-80px)];
+    }
+
+    .center{
+        @apply block mx-auto;
+    }
+    .hide{
+        @apply opacity-0 pointer-events-none duration-100;
+    }
+
+    .show{
+        @apply opacity-100 pointer-events-auto;
+    }
+}

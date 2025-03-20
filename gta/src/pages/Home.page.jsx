@@ -4,7 +4,7 @@ const HomePage = () => {
 
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='h-cover flex justify-center items-center'>
            hello
         </div>
     )

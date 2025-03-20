@@ -110,27 +110,18 @@ const SignupPage = () => {
                     {otpVerification ?
 
                         // otp verification
-                        <div className='max-w-xl  min-h-[80vh] flex flex-col justify-center items-start gap-4  px-2 md:px-5 py-6 z-10 '>
-                            <h1 className='text-xl text-slate-700 font-semibold tracking-wide'>Verification Code</h1>
-                            <p className='w-xs text-sm font-normal text-slate-600'>we have sent a verification code to your email address. Please enter the code below</p>
-                            {/* <p className='w-xs text-sm font-normal text-slate-600'></p> */}
-                            <div className='px-4 min-w-64 py-2 border-[1px] flex justify-between items-center border-slate-300 rounded-lg text-sm font-mdeium text-slate-500'>
-                                <span>{emailVerfied || "example@gamil.com"}</span>
-                                <i className='fi fi-rr-envelope text-lg text-slate-500'></i>
-                            </div>
-                            <div className='min-w-64'>
-                                <OtpComponent count={6} onOTPComplete={handleCompletedOTP} />
-                            </div>
-                        </div> :
+                        <AnimationWrapper>
+                            <OtpComponent count={6} onOTPComplete={handleCompletedOTP} />
+                        </AnimationWrapper> :
 
                         // signup form
-                        <div className="left  max-w-xl px-2 md:px-5 py-6 z-10 ">
+                        <div className="left max-w-xl px-2 md:px-5 py-6 z-10 ">
 
 
                             {/* header */}
                             <div className="headers flex flex-col items-center justify-center my-5">
-                                <p className="text-slate-800 w-fit font-semibold tracking-normal text-2xl">Join the Fastest Growing</p>
-                                <p className="text-slate-800 w-fit font-semibold tracking-normal text-2xl"><span className="text-amber-500">GTA</span> Community</p>
+                                <p className="text-slate-800 w-fit font-semibold tracking-normal text-xl">Join the Fastest Growing</p>
+                                <p className="text-slate-800 w-fit font-semibold tracking-normal text-xl"><span className="text-amber-500">GTA</span> Community</p>
                             </div>
 
                             {/* social handle login buttons */}
@@ -173,7 +164,7 @@ const SignupPage = () => {
                                             <span onClick={() => setTermsCondition(prev => !prev)} type="checkbox" className="w-4 h-4 cursor-pointer border-[1px] border-slate-200 bg-blue-50 focus:border-amber-500 flex items-center ">{termsCondition ? <i className="fi fi-rr-check text-amber-600 "></i> : ""}</span>
                                             <span className="text-sm font-light text-slate-500">Accept Terms and Condition</span>
                                         </div>
-                                        <button type="submit" className="cursor-pointer py-2 px-6 border-[1px] bg-slate-50 text-slate-600 font-light uppercase text-sm border-slate-400 hover:border-amber-500 rounded-full ">Sign up</button>
+                                        <button type="submit" className="cursor-pointer py-2 px-6 border-[1px] bg-slate-50 text-slate-600 font-light uppercase text-sm border-slate-400  hover:border-amber-500 rounded-full ">Sign up</button>
                                     </div>
                                 </form>
 
@@ -187,7 +178,7 @@ const SignupPage = () => {
 
                             {/* already have an account  */}
                             <div className=" w-full text-center font-light text-slate-500 text-sm mt-5">
-                                Already have an account? <Link to='/login' className="text-amber-500 cursor-pointer">Sign in</Link>
+                                Already have an account? <Link to='/login' className="text-amber-500 font-medium bg-blend-lighten cursor-pointer">Sign in</Link>
                             </div>
 
                         </div>}
