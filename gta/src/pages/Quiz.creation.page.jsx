@@ -108,10 +108,10 @@ const QuizCreatorPage = () => {
             </nav>
 
             {/* w-[80%] lg:w-[70%] xl:w-[60%] */}
-          </AnimationWrapper> :
+          </AnimationWrapper> :<AnimationWrapper>
           <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:w-fit flex items-center justify-start md:justify-center'>
             <FormSection ActiveTab={activeLink} />
-          </section>
+          </section></AnimationWrapper>
 
 
       }
