@@ -53,7 +53,7 @@ const Navbar = () => {
                 </button>
 
 
-                <Link to={'/quiz'} className='hidden md:flex gap-2 link'>
+                <Link to={'/create-quiz'} className='hidden md:flex gap-2 link'>
                     <i className='fi fi-rr-pen-nib'></i>
                     <p className='text-[#6B6B6B]'>Quiz</p>
                 </Link>
