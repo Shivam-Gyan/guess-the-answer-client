@@ -6,6 +6,7 @@ import FormSection from "./quiz.form.jsx";
 import Tag from "./tags.quiz.jsx";
 import QuestionForm from "./question.form.jsx";
 import DropDownOptions from "./dropdown.options.jsx";
+import QuestionCard from "./question.card.jsx";
 
 
 
@@ -19,4 +20,5 @@ export {
     Tag,
     QuestionForm,
     DropDownOptions,
+    QuestionCard,
 }

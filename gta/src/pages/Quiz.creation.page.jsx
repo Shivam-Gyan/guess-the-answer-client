@@ -114,7 +114,8 @@ const QuizCreatorPage = () => {
           <AnimationWrapper className={`flex justify-center`}>
             {
               activeLink == 'Create Quiz' ?
-                <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-full flex items-center justify-start md:justify-center'>
+                <section className='max-sm:w-[94vw] h-[calc(100vh-80px)] max-md:w-[80vw] lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-[70vw] flex items-center justify-start md:justify-center'>
+                {/* <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-full flex items-center justify-start md:justify-center'> */}
                   <FormSection ActiveTab={activeLink} />
                 </section> :
 

@@ -144,17 +144,17 @@ const SignupPage = () => {
                             <div className="classical-login my-10">
 
                                 <form onSubmit={(e) => handleFormSubmit(e)} >
-                                    <div className="input-box hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
+                                    <div className=" hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
                                         <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-4">Name</span>
                                         <InputBox name='name' type='text' id='name' placeholder='fullname' icon="fi-rr-user" />
 
                                     </div>
-                                    <div className="input-box hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
+                                    <div className=" hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
                                         <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-4">Email</span>
                                         <InputBox name='email' type='text' id='email' placeholder='email' icon="fi-rr-envelope" />
 
                                     </div>
-                                    <div className="input-box w-full hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
+                                    <div className=" w-full hover:border-amber-500 focus:border-amber-500 relative border-[1px] py-1 flex items-center px-4 border-slate-200 rounded-lg mb-6">
                                         <span className="absolute text-md font-light text-slate-400 bg-white px-2 left-3 -top-4">Password</span>
                                         <InputBox name='password' type='password' id='password' placeholder='password' />
                                     </div>
