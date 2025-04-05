@@ -3,7 +3,7 @@ import { Tag } from './index.js'
 import { AnimationWrapper } from '../common';
 
 const QuizFormat = {
-  quiz_type: "Quiz",
+  quiz_type: "",
   quiz_title: "Title of Quiz",
   quiz_description: "Description of Quiz",
   tags: []
@@ -22,24 +22,22 @@ const FormSection = ({ ActiveTab }) => {
   let characterLimit = 300;
   let tagLimit = 10;
 
+
+  // handle image preview
   const handleImagePreview = (e) => {
-
     e.preventDefault()
-    console.log(e.target.files[0])
-
     let profileImg = e.target.files[0]
-
     profileImgRef.current.src = URL.createObjectURL(profileImg)
-    console.log(profileImgRef.current.src)
     setUpdatedProfileImg(profileImgRef.current.src)
-
-
   }
+
+  // upload image to server
   const handleProfileImgUplaod = (e) => {
     e.preventDefault()
     console.log("Profile Image Uploaded")
   }
 
+  // publish quiz
   const handlePublishClick = (e) => {
     e.preventDefault()
     console.log(quizData)
@@ -49,19 +47,16 @@ const FormSection = ({ ActiveTab }) => {
   return (
     
       <section className='relative h-full w-full overflow-y-auto ' style={{ scrollbarWidth: "none" }}>
-        <div className=' flex mt-[74px] justify-end md:justify-between w-full '>
-          <h1 className='ml-8  text-lg hidden md:block font-normal  text-gray-600'>{ActiveTab}</h1>
-          <button onBlur={() => setShowTypeOption(false)} onClick={() => setShowTypeOption(prev => !prev)} className='outline-none flex gap-2 text-gray-600 mr-8 md:mr-0'>
-            <span>Quiz Type</span>
+        <div className=' flex mt-[65px] justify-end md:justify-between w-full  '>
+          <h1 className='ml-8  text-lg hidden md:block font-medium   text-slate-400'>{ActiveTab}</h1>
+          <button onBlur={() => setTimeout(()=>setShowTypeOption(false),300)} onClick={() => setShowTypeOption(prev => !prev)} className='outline-none flex gap-2 text-slate-500 input-box w-fit mt-4 md:mt-0 py-1 mr-8 md:mr-0'>
+            <span>{quizData.quiz_type||"Quiz Type"}</span>
             <span className=' pt-1 flex items-center'><i className={`fi fi-br-angle-small-${showTypeOption ? "up" : "down"} text-lg`}></i></span>
           </button>
-        </div>
-        <div className='px-8 mb-10 md:mt-0 flex md:flex-row flex-col gap-5'>
 
-          {/* option selector */}
           {
             showTypeOption &&
-            <div className='absolute z-20 right-[20px] md:-right-2 top-[112px] '>
+            <div className='absolute z-20 right-4 md:-right-4 top-[112px]'>
               <AnimationWrapper transition={{ duration: 0.4 }}>
                 <div 
                 
@@ -84,8 +79,14 @@ const FormSection = ({ ActiveTab }) => {
             </div>
           }
 
+        </div>
+        <div className='px-5  mb-10 md:mt-0 flex md:flex-row flex-col gap-4 lg:gap-0'>
+
+          {/* option selector */}
+          
           {/* upload banner to Quiz*/}
-          <div className="flex flex-col items-center justify-center md:justify-start mb-5 mt-8">
+          <div className="flex flex-col md:items-start items-center justify-center md:justify-start mb-5 mt-2">
+            <p className="text-sm text-gray-500 mb-3 ml-2 mt-2">Quiz Cover Image</p>
             <label htmlFor="uploadImg" id="profileImgLabel"
               className="relative block w-full md:w-56 h-auto md:h-44 bg-gray-300 rounded-md overflow-hidden">
               <div
@@ -103,31 +104,31 @@ const FormSection = ({ ActiveTab }) => {
 
             <button
               onClick={handleProfileImgUplaod}
-              className="cursor-pointer py-2 px-6  bg-slate-700 text-white font-normal uppercase text-sm  hover:border-amber-500 rounded-lg w-full mt-5 "
+              className="cursor-pointer py-2  bg-slate-700 hover:bg-slate-800 text-white font-normal uppercase text-sm  hover:border-amber-500 rounded-lg w-full mt-5 "
             >Upload</button>
           </div>
 
-          <div>
-            <form className="flex flex-col gap-4">
+          <div className='w-full px-2 h-full mt-2'>
+            <div className="flex flex-col gap-4">
               <div className="lg:pl-8">
 
-                <p className="text-[15px] text-gray-500 mb-2 mt-2">Quiz Title</p>
+                <p className="text-sm text-gray-500 mb-2 mt-2">Quiz Title</p>
                 <input
                   type="text"
-                  placeholder="Blog Title"
-                  className="input-box"
+                  placeholder="Quiz Title"
+                  className="input-box placeholder:text-sm text-sm"
                   defaultValue={quizData.quiz_title}
                   onChange={(e) => {
                     setQuizData({ ...quizData, quiz_title: e.target.value })
                   }}
                 />
-                <p className="text-[15px] text-gray-500 mb-2 mt-9">Short description about your Quiz </p>
+                <p className="text-sm text-gray-500 mb-2 mt-3">Short description about your Quiz </p>
 
                 <textarea
 
                   maxLength={characterLimit}
                   defaultValue={quizData.quiz_description}
-                  className="h-40  resize-none leading-7 input-box pl-4"
+                  className="h-36 text-sm resize-none leading-7 input-box pl-4"
                   onChange={(e) => {
                     setQuizData({ ...quizData, quiz_description: e.target.value })
                   }}
@@ -144,16 +145,16 @@ const FormSection = ({ ActiveTab }) => {
                 <p className="my-1 text-gray-400 text-[13px] text-right">{characterLimit - quizData.quiz_description.length} charcters left</p>
 
                 <p
-                  className="mb-2 text-[15px] text-gray-500 mt-2"
+                  className="mb-2 text-xs text-gray-500 mt-1"
                 >
-                  Topics-(Helps in searching and ranking your Quiz)</p>
+                  <span className='text-red-500'>* </span>Topics-(Helps in searching and ranking your Quiz)</p>
 
 
                 <div className="relative input-box pl-2 py-2 pb-4">
                   <input
                     type="text"
                     placeholder="Topic like- science, history etc"
-                    className="sticky input-box bg-white placeholder:text-[15px] focus:bg-gray-50 top-0 left-0 pl-4 mb-3"
+                    className="sticky input-box bg-white placeholder:text-sm focus:bg-gray-50 top-0 left-0 pl-4 mb-3"
                     onKeyDown={(e) => {
 
                       if (e.keyCode == 13 || e.keyCode == 188) {
@@ -177,17 +178,17 @@ const FormSection = ({ ActiveTab }) => {
                     return <Tag key={index} tagIndex={index} tag={tag} />
                   })}
                 </div>
-                <p className="mt-2 text-gray-400 text-sm text-right">{tagLimit - quizData.tags.length} Tags left</p>
+                <p className="mt-1 text-gray-400 text-sm text-right">{tagLimit - quizData.tags.length} Tags left</p>
 
                 <button
-                  className="mt-2 py-2 px-5 bg-slate-700 text-white font-normal uppercase text-sm border-slate-400 hover:border-amber-500 rounded-md w-fit"
+                  className="mt-2 py-2 px-5 cursor-pointer hover:bg-slate-600 bg-slate-700 text-white font-normal uppercase text-sm border-slate-400 hover:border-amber-500 rounded-md w-fit"
                   onClick={handlePublishClick}
                 >
                   Publish
                 </button>
 
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </section>

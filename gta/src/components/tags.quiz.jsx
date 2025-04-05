@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 
 const Tag = ({ tag, tagIndex }) => {
 
-    const tags=[
+    let tags=[
         "AI",
         "Science",
         "Technology",
@@ -15,7 +15,7 @@ const Tag = ({ tag, tagIndex }) => {
     // const []
 
     return (
-        <div className="relative py-1 mt-2 mr-2 px-5 bg-white rounded-full inline-block hover:bg-opacity-50 pr-10">
+        <div className="relative py-1  mr-2 px-5 bg-gray-50 rounded-full inline-block hover:bg-opacity-50 pr-10">
           
 
             <p

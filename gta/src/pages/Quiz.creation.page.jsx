@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { createQuizNavLink, UserNavLink } from '../utils/requiredData.js'
 import { Link, NavLink } from 'react-router-dom'
 import AnimationWrapper from '../common/page.animation.jsx';
-import { FormSection } from '../components'
+import { FormSection, QuestionForm } from '../components'
 
 const QuizCreatorPage = () => {
 
@@ -39,7 +39,7 @@ const QuizCreatorPage = () => {
 
   return (
     // <div className='block mx-auto'>
-    <div className='w-full relative h-cover flex md:flex-row flex-col  items-center justify-center bg-[#F3F3F3]'>
+    <div className='w-screen relative h-cover flex md:flex-row flex-col  items-center justify-center bg-[#F3F3F3]'>
 
       {/* left side navigation panel  h-[calc(100vh-80px)]*/}
       <nav className='w-44 hidden h-[85vh] py-10 md:flex flex-col items-between justify-start h-calc(100vh - 80px) border-r-2 border-gray-200 '>
@@ -108,12 +108,37 @@ const QuizCreatorPage = () => {
             </nav>
 
             {/* w-[80%] lg:w-[70%] xl:w-[60%] */}
-          </AnimationWrapper> :<AnimationWrapper>
-          <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:w-fit flex items-center justify-start md:justify-center'>
-            <FormSection ActiveTab={activeLink} />
-          </section></AnimationWrapper>
+          </AnimationWrapper> :
+
+          // right side component rendering 
+          <AnimationWrapper className={`flex justify-center`}>
+            {
+              activeLink == 'Create Quiz' ?
+                <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-full flex items-center justify-start md:justify-center'>
+                  <FormSection ActiveTab={activeLink} />
+                </section> :
+
+                activeLink == 'Add Questions' ?
+                  <section className=' max-sm:w-[94vw] h-[calc(100vh-80px)] max-md:w-[80vw] lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-[70vw] flex  justify-start md:justify-center'>
+                    <QuestionForm ActiveTab={activeLink} />
+                  {/* <h1>hello</h1> */}
+                    
+                  </section>:
+                  <section className=' w-full  h-[calc(100vh-80px)] bg-red-100 sm:w-3/4 lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-full flex items-center justify-start md:justify-center'>
+                   
+                    <h1>Theme</h1>
+                  </section>
+                
 
 
+              // <section className='w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-full flex items-center justify-start md:justify-center'>
+
+              // </section> :
+              // <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:w-full flex items-center justify-start md:justify-center'>
+
+              // </section>
+            }
+          </AnimationWrapper>
       }
 
 
@@ -126,7 +151,7 @@ const QuizCreatorPage = () => {
 
 
       </section> */}
-    {/* </div> */}
+      {/* </div> */}
     </div>
   )
 }

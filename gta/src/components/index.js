@@ -4,6 +4,8 @@ import Navbar from "./navbar.component.jsx";
 import UserNavigationPanel from "./user.navigation.jsx";
 import FormSection from "./quiz.form.jsx";
 import Tag from "./tags.quiz.jsx";
+import QuestionForm from "./question.form.jsx";
+import DropDownOptions from "./dropdown.options.jsx";
 
 
 
@@ -15,4 +17,6 @@ export {
     UserNavigationPanel,
     FormSection,
     Tag,
+    QuestionForm,
+    DropDownOptions,
 }
