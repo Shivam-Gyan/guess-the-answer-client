@@ -4,10 +4,23 @@ import { Link, NavLink } from 'react-router-dom'
 import AnimationWrapper from '../common/page.animation.jsx';
 import { FormSection, QuestionForm } from '../components'
 
+
+export const QuizFormat = {
+  quiz_type: "Quiz",
+  quiz_title: "Title of Quiz",
+  quiz_description: "Description of Quiz",
+  tags: [],
+  questions:[],
+  noOfQuestions: 5,
+  quizBanner:""
+}
+
+
 const QuizCreatorPage = () => {
 
   const [activeLink, setActiveLink] = useState('Create Quiz');
   const [showSideNav, setShowSideNav] = useState(false);
+  const [quizData, setQuizData] = useState(QuizFormat);
 
   let activeTabLine = useRef();
   let sideBarIconTab = useRef();
@@ -116,12 +129,12 @@ const QuizCreatorPage = () => {
               activeLink == 'Create Quiz' ?
                 <section className='max-sm:w-[94vw] h-[calc(100vh-80px)] max-md:w-[80vw] lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-[70vw] flex items-center justify-start md:justify-center'>
                 {/* <section className=' w-full  h-[calc(100vh-80px)] sm:w-3/4 lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-full flex items-center justify-start md:justify-center'> */}
-                  <FormSection ActiveTab={activeLink} />
+                  <FormSection ActiveTab={activeLink} setActiveTab={setActiveLink} quizData={quizData} setQuizData={setQuizData} />
                 </section> :
 
                 activeLink == 'Add Questions' ?
                   <section className=' max-sm:w-[94vw] h-[calc(100vh-80px)] max-md:w-[80vw] lg:min-w-[70vw] xl:min-w-[50vw] md:min-w-[70vw] flex  justify-start md:justify-center'>
-                    <QuestionForm ActiveTab={activeLink} />
+                    <QuestionForm ActiveTab={activeLink} setActiveTab={setActiveLink} quizData={quizData} setQuizData={setQuizData}  />
                   {/* <h1>hello</h1> */}
                     
                   </section>:

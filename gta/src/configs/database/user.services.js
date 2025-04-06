@@ -13,6 +13,13 @@ const userServices = {
     otpVerify: async (data) => {
         return await axios.post(URL+'user/otp-verify', data)
     },
+    uploadProfileImage:async(data)=>{
+        return await axios.post(URL+'user/upload-image', data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    }
 }
 
 export default userServices;

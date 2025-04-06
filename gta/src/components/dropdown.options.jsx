@@ -2,7 +2,9 @@ import React from 'react'
 import { AnimationWrapper } from '../common';
 
 
-const DropDownOptions = ({ setShowTypeOption, showTypeOption,DropDownOptionsFor, setType, options, Type }) => {
+const DropDownOptions = ({ setShowTypeOption, showTypeOption,DropDownOptionsFor, currentQuestionIndex,setType, options, Type }) => {
+
+
     return (
         <>
 
@@ -32,6 +34,7 @@ const DropDownOptions = ({ setShowTypeOption, showTypeOption,DropDownOptionsFor,
                                         key={index}
                                         onClick={(e) => {
                                             setType(e.target.innerText);
+                                            // console.log()
                                             setShowTypeOption(false);
                                         }}
                                         className='px-3 p-2 pb-2 text-center bg-slate-200 text-slate-800 text-sm w-full cursor-pointer'>{type}</button>
